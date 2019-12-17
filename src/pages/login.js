@@ -10,9 +10,11 @@ export default function Login() {
     const [email, setEmail] = useState('');
     const [techs, setTechs ] = useState('');
     async function handleSubmit(){
-        console.log(email);
-        console.log(techs);
-        
+        const reponse = await api.post('/sessions', {
+            email
+        })
+        const {_id} = reponse.data;
+        console.log(_id);
     }
     return (
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
