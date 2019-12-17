@@ -1,12 +1,12 @@
 import React, {useState} from 'react'
-import { View, KeyboardAvoidingView, Image, StyleSheet, Text, TouchableOpacity } from 'react-native'
+import { View, AsyncStorage, KeyboardAvoidingView, Image, StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
 
 import api  from '../services/api';
 import logo from '../assets/logo.png'
 
 
-export default function Login() {    
+export default function Login({ navigation}) {    
     const [email, setEmail] = useState('');
     const [techs, setTechs ] = useState('');
     async function handleSubmit(){
@@ -14,7 +14,10 @@ export default function Login() {
             email
         })
         const {_id} = reponse.data;
-        console.log(_id);
+        await AsyncStorage.setItem('user', _id); 
+        await AsyncStorage.setItem('techs', techs); 
+
+        navigation.navigate('List')
     }
     return (
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
