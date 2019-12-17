@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { View, AsyncStorage, KeyboardAvoidingView, Image, StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
 
@@ -9,6 +9,15 @@ import logo from '../assets/logo.png'
 export default function Login({ navigation}) {    
     const [email, setEmail] = useState('');
     const [techs, setTechs ] = useState('');
+
+    useEffect(()=> {
+        AsyncStorage.getItem('user').then(user => {
+            if(user){
+                navigation.navigate('List');
+            }
+        })
+    }, [])
+
     async function handleSubmit(){
         const reponse = await api.post('/sessions', {
             email
@@ -17,7 +26,7 @@ export default function Login({ navigation}) {
         await AsyncStorage.setItem('user', _id); 
         await AsyncStorage.setItem('techs', techs); 
 
-        navigation.navigate('List')
+        navigation.navigate('List');
     }
     return (
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
