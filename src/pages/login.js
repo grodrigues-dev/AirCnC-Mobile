@@ -1,13 +1,13 @@
 import React from 'react'
-import { View, Image, StyleSheet, Text } from 'react-native'
+import { View, KeyboardAvoidingView, Image, StyleSheet, Text, TouchableOpacity } from 'react-native'
 
 import logo from '../assets/logo.png'
 import { TextInput } from 'react-native-gesture-handler'
 
+
 export default function Login() {
     return (
-        <View style={styles.container}>
-
+        <KeyboardAvoidingView behavior="padding" style={styles.container}>
             <Image source={logo} />
             <View style={styles.form}>
             <Text style={styles.laber}>SEU EMAIL *</Text>
@@ -19,8 +19,19 @@ export default function Login() {
             autoCapitalize= "none"
             autoCorrect={false}
             />
+            <Text style={styles.laber}>TECNOLOGIAS *</Text>
+            <TextInput 
+            style={styles.input}
+            placeholder="Tecnologias de interesse"
+            placeholderTextColor="#999"
+            autoCapitalize= "words"
+            autoCorrect={false}
+            />
+            <TouchableOpacity style={styles.button}>
+                <Text style={styles.buttonText}>Encontrar spots</Text>
+            </TouchableOpacity>
             </View>
-        </View>
+        </KeyboardAvoidingView>
     );
 }
 
@@ -49,5 +60,17 @@ const styles = StyleSheet.create({
         height: 44, 
         marginBottom: 20, 
         borderRadius: 2
+    }, 
+    button: {
+        height: 42, 
+        backgroundColor: '#f05a5b', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        borderRadius: 2
+    }, 
+    buttonText: {
+        color: '#fff', 
+        fontWeight: "bold", 
+        fontSize: 16,
     }
 });
