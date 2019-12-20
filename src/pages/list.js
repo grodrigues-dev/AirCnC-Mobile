@@ -8,18 +8,16 @@ import logo from '../assets/logo.png'
 export default function List(){
     const [techs, setTechs] = useState([]);
     useEffect(()=>{
-
         AsyncStorage.getItem('techs').then(storagedTechs =>{
             const techsArray = storagedTechs.split(',').map(tech =>tech.trim());
-            setTechs(techsArray);
-            console.log(techs);
-            
+            setTechs(techsArray);      
         })
     },[]);
+
     return (
         <SafeAreaView style={styles.container}>
             <Image style={styles.logo} source={logo}/>
-            {techs.map(tech => <SpotList key={tech} tech={tech}/>)}
+            {techs.map(tech => <SpotList  key={tech} tech={tech}/>)}
         </SafeAreaView>
     )
 }

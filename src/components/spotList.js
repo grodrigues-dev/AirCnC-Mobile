@@ -8,10 +8,10 @@ export default function SpotList({tech}){
         async function loadSpots(){
             const response = await api.get('/spots', {
                 params: {tech}
-            })
-            console.log(response.data);
-            
+            })     
+            console.log(response.data);         
         }
+        loadSpots();
     }, [])
-    return <Text>{tech}</Text>
+    return <Text>{tech}</Text> 
 }
