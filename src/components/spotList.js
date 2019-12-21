@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {View, StyleSheet, Text, FlatList, Image, TouchableOpacity} from 'react-native';
 
 import api from '../services/api'
+import { bold } from 'ansi-colors';
 
 export default function SpotList({tech}){
     const [spots, setSpots] = useState([]);
@@ -10,8 +11,7 @@ export default function SpotList({tech}){
             const response = await api.get('/spots', {
                 params: {tech}
             })
-            setSpots(response.data);
-            
+            setSpots(response.data);         
         }
         loadSpots();
     }, []); 
@@ -27,7 +27,7 @@ export default function SpotList({tech}){
         showsHorizontalScrollIndicator={false}
         renderItem={({item})=>(
             <View style={styles.listItem}>
-                <Image source={{uri: item.thumbnail_url}} />
+                <Image style={styles.thumbnail} source={{uri: item.thumbnail_url}} />
                 <Text style={styles.company}>{item.company} </Text>
                 <Text style={styles.price}>{item.price ? `R$${item.price}/dia` : 'GRATUITO'}</Text>
                 <TouchableOpacity onPress={()=>{}}style={styles.button}>
@@ -53,5 +53,40 @@ export default function SpotList({tech}){
         }, 
         bold: {
             fontWeight: 'bold'
+        }, 
+        list: {
+            paddingHorizontal: 20, 
+        },
+        listItem: {
+            marginRight: 15
+        }, 
+        thumbnail: {
+            width: 200, 
+            height: 120, 
+            resizeMode: 'cover', 
+            borderRadius: 2,
+        }, 
+        company: {
+            fontSize: 24, 
+            fontWeight: "bold", 
+            marginTop: 5 
+        }, 
+        price: {
+            fontSize: 15, 
+            color: "#999", 
+            marginTop: 5
+        },
+        button: {
+            height: 32, 
+            backgroundColor: '#f05a5b', 
+            justifyContent: 'center', 
+            alignItems: 'center', 
+            borderRadius: 2, 
+            marginTop: 15
+        }, 
+        buttonText: {
+            color: '#fff', 
+            fontWeight: "bold", 
+            fontSize: 16,
         }
     });
