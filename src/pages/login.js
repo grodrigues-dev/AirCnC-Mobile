@@ -32,7 +32,7 @@ export default function Login({ navigation}) {
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
             <Image source={logo} />
             <View style={styles.form}>
-            <Text style={styles.laber}>SEU EMAIL *</Text>
+            <Text style={styles.label}>SEU EMAIL *</Text>
             <TextInput 
             style={styles.input}
             placeholder="Seu e-mail"
@@ -43,7 +43,7 @@ export default function Login({ navigation}) {
             value={email}
             onChangeText={setEmail}
             />
-            <Text style={styles.laber}>TECNOLOGIAS *</Text>
+            <Text style={styles.label}>TECNOLOGIAS *</Text>
             <TextInput 
             style={styles.input}
             placeholder="Tecnologias de interesse"
