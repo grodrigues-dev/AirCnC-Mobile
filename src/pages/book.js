@@ -3,7 +3,7 @@ import { Text, TextInput,TouchableOpacity, SafeAreaView, StyleSheet, AsyncStorag
 import api from '../services/api'
 
 export default function Book({ navigation }) {
-    const [date, setDate] = ('');
+    const [date, setDate] = useState('');
     const id = navigation.getParam('id');
 
     async function handleSubmit(){
@@ -15,7 +15,7 @@ export default function Book({ navigation }) {
             headers: {user_id}
         });
         Alert.alert('Solicitação de reserva enviada'); 
-        navigation.navigate('List');
+        navigation.navigate('List');        
     }
 
     function handleCancel(){
