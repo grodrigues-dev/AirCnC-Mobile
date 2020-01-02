@@ -1,27 +1,28 @@
 import React, {useState, useEffect} from 'react' 
 import {Alert, SafeAreaView, View,ScrollView, StyleSheet, Image, AsyncStorage} from 'react-native'
 
+// import URLAPI from 'react-native-dotenv'
+
 import socketio  from 'socket.io-client'
 
 import SpotList from '../components/spotList'
 
 import logo from '../assets/logo.png'
 
+import Logout from '../components/logout'
+
 export default function List(){
     const [techs, setTechs] = useState([]);
     useEffect(()=>{
         AsyncStorage.getItem('techs').then(storagedTechs =>{
             const techsArray = storagedTechs.split(',').map(tech =>tech.trim());
-            setTechs(techsArray);   
-            console.log(techs);
-
-               
+            setTechs(techsArray);                  
         })
     },[]);
 
     useEffect(()=>{
         AsyncStorage.getItem('user').then(user_id =>{
-            const socket = socketio('http://172.22.120.151:3001', {
+            const socket = socketio('http://172.22.120.165:3001', {
                 query: {user_id }
             });             
             socket.on('booking_response', booking =>{
@@ -36,6 +37,7 @@ export default function List(){
             <ScrollView>
                 {techs.map(tech => <SpotList  key={tech} tech={tech}/>)}
             </ScrollView>
+            <Logout/>
         </SafeAreaView>
     )
 }

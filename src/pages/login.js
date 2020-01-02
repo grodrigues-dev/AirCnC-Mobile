@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { View, AsyncStorage, KeyboardAvoidingView, Image, StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
 
+
 import api  from '../services/api';
 import logo from '../assets/logo.png'
 
