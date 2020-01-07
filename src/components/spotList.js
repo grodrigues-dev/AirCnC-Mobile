@@ -14,7 +14,6 @@ function SpotList({ tech, navigation }) {
             setSpots(response.data);
         }
         loadSpots();
-
     }, []);
 
     function handleNavigate(id) {
@@ -23,7 +22,7 @@ function SpotList({ tech, navigation }) {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>{spots.length>0 ? `Empresas que usam ${tech}`: ` `} </Text>
+            <Text style={styles.title}>{spots.length>0 ? `Empresas que usam ${tech}`: ``} </Text>
             <FlatList
                 style={styles.list}
                 data={spots}
@@ -32,7 +31,6 @@ function SpotList({ tech, navigation }) {
                 showsHorizontalScrollIndicator={false}
                 renderItem={({ item }) => (
                     <View style={styles.listItem}>
-                        {/* <Text style={styles.bold}>`Ainda não foram cadastradas empresas que usam ${tech}`</Text> */}
                         <Image style={styles.thumbnail} source={{ uri: item.thumbnail_url }} />
                         <Text style={styles.company}>{item.company} </Text>
                         <Text style={styles.price}>{item.price ? `R$${item.price}/dia` : 'GRATUITO'}</Text>
