@@ -7,21 +7,30 @@ function Logout({ navigation }) {
         await AsyncStorage.removeItem('user')
         navigation.navigate('Login')
     }
-
+    async function handleBookings(){
+        navigation.navigate('Bookings')
+    }
     return (
-        <View>
+        <View style={styles.footer}>
             <TouchableOpacity>
-                <Text style={styles.logout} onPress={handleNavigate}>sair</Text>
+                <Text style={styles.link} onPress={handleNavigate}>sair</Text>
+            </TouchableOpacity>
+            <TouchableOpacity>
+                <Text style={styles.link} onPress={handleBookings}>reservas</Text>
             </TouchableOpacity>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    logout: {
+    link: {
         fontSize: 18,
         color: '#f05a5b',
-        marginLeft: 18
+    }, 
+    footer: {
+        flexDirection: "row", 
+        justifyContent: 'space-between', 
+        margin: 10
     }
 })
 
