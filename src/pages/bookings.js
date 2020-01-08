@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Text,Image, SafeAreaView, AsyncStorage,ScrollView, StyleSheet } from 'react-native'
+import { Text,Image, SafeAreaView, AsyncStorage,View, StyleSheet } from 'react-native'
 import api from '../services/api'
 
 import logo from '../assets/logo.png'
@@ -11,9 +11,9 @@ export default function Bookings() {
         <SafeAreaView>
              <Image style={styles.logo} source={logo}/>
             <Text style={styles.title}>Suas Reservas:</Text>
-            <ScrollView>
+            <View>
                 <BookingList />
-            </ScrollView>
+            </View>
         </SafeAreaView>
     )
 }
