@@ -22,6 +22,7 @@ export default function List(){
 
     useEffect(()=>{
         AsyncStorage.getItem('user').then(user_id =>{
+            //configurar no socket a porta do localhost que escuta a api
             const socket = socketio('http://172.22.120.165:3001', {
                 query: {user_id }
             });             

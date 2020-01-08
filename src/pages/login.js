@@ -44,7 +44,7 @@ export default function Login({ navigation}) {
             value={email}
             onChangeText={setEmail}
             />
-            <Text style={styles.label}>TECNOLOGIAS *</Text>
+            <Text style={styles.label}>TECNOLOGIAS * (Separar por vírgula)</Text>
             <TextInput 
             style={styles.input}
             placeholder="Tecnologias de interesse"
