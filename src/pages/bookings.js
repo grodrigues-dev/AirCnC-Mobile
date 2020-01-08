@@ -1,20 +1,23 @@
-import React, { useEffect, useState } from 'react'
-import { Text,Image, SafeAreaView, AsyncStorage,View, StyleSheet } from 'react-native'
-import api from '../services/api'
+import React from 'react'
+import { Text, Image, SafeAreaView, View, StyleSheet } from 'react-native'
+import Logout from '../components/logout'
 
 import logo from '../assets/logo.png'
 import BookingList from '../components/bookingList'
 
 export default function Bookings() {
-    
+
     return (
-        <SafeAreaView>
-             <Image style={styles.logo} source={logo}/>
-            <Text style={styles.title}>Suas Reservas:</Text>
-            <View>
-                <BookingList />
-            </View>
-        </SafeAreaView>
+        <>
+            <SafeAreaView style={styles.container}>
+                <Image style={styles.logo} source={logo} />
+                <Text style={styles.title}>Suas Reservas:</Text>
+                <View>
+                    <BookingList />
+                </View>
+            </SafeAreaView>
+            <Logout />
+        </>
     )
 }
 
@@ -25,11 +28,14 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         marginBottom: 15,
         marginTop: 10
-    }, 
+    },
     logo: {
-        height: 32, 
-        resizeMode: "contain", 
-        alignSelf: "center", 
+        height: 32,
+        resizeMode: "contain",
+        alignSelf: "center",
         marginTop: 40
+    }, 
+    container: {
+        flex:1
     }
 })
